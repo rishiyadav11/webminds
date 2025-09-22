@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "WebMinds Studio",
     images: [
       {
-        url: "/og.png",
+        url: "/og.PNG",
         width: 1200,
         height: 630,
         alt: "WebMinds Studio Logo",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     site: "@rishiyadav11",
     title: "WebMinds Studio - Fullstack Web Development",
     description: "Create portfolios, web apps, and digital solutions quickly with WebMinds Studio.",
-    images: ["/og-image.png"],
+    images: ["/og.PNG"],
   },
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "logo.png" }],
 };
 
 const geist = Geist({
