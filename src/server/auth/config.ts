@@ -50,7 +50,7 @@ export const authConfig: NextAuthConfig = {
   trustHost: true,
   callbacks: {
     session: ({ session, user }) => {
-      const typedUser = user as AuthUser; // ✅ safely cast user
+      const typedUser = user as AuthUser;
       return {
         ...session,
         user: {
@@ -61,5 +61,13 @@ export const authConfig: NextAuthConfig = {
         },
       };
     },
+    redirect: ({ url, baseUrl }) => {
+      // Ensure redirect always stays within your site
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
+  },
+  pages: {
+    signIn: "/auth/signin", // optional custom sign-in page
+    error: "/auth/error",    // optional error page
   },
 };
