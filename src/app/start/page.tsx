@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { signIn, useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { Github } from "lucide-react";
@@ -15,6 +15,14 @@ const StartPage = () => {
       router.push("/dashboard");
     }
   }, [status, router]);
+
+  const handleGitHubLogin = () => {
+    signIn("github", { prompt: "login" }); // <-- force GitHub account chooser
+  };
+
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: "/start" }); // redirect after logout
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white flex flex-col items-center justify-center px-6 md:px-12">
@@ -32,7 +40,7 @@ const StartPage = () => {
 
           {/* GitHub Login Button */}
           <button
-            onClick={() => signIn("github", { prompt: "login", callbackUrl: "/dashboard" })}
+            onClick={handleGitHubLogin}
             className="flex items-center cursor-pointer justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 text-black font-semibold py-3 px-8 rounded-xl shadow-lg"
           >
             <Github size={24} /> Connect with GitHub
@@ -47,7 +55,7 @@ const StartPage = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 animate-gradient-x"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
               <span className="text-white text-2xl md:text-4xl font-bold animate-bounce mb-2">
-                🚀 Let&apos;s explore your projects
+                🚀 Let's explore your projects
               </span>
               <span className="text-gray-200 text-sm md:text-lg">
                 Your GitHub projects will be instantly visible in your portfolio.
@@ -55,6 +63,16 @@ const StartPage = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Logout Button if logged in */}
+      {session && (
+        <button
+          onClick={handleLogout}
+          className="mt-10 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-lg"
+        >
+          Logout
+        </button>
       )}
 
       {/* Footer */}
