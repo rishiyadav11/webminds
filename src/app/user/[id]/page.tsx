@@ -1,4 +1,3 @@
-
 import { api } from "../../../trpc/server";
 import { z } from "zod";
 import { ThemeProvider } from "hooks/useTheme";
@@ -50,6 +49,38 @@ const portfolioSchema = z.object({
 interface PageParams {
   params: {
     id: string;
+  };
+}
+
+// ✅ Dynamic Metadata
+export async function generateMetadata({ params }: PageParams) {
+  const githubId = params.id;
+
+  const portfolio: Portfolio | null = await api.portfolioRouter.getByGithubId({ githubId });
+
+  if (!portfolio) {
+    return {
+      title: "Webminds Portfolio",
+      description: "Create your portfolio in seconds with Webminds.",
+    };
+  }
+
+  const { personal } = portfolioSchema.parse(portfolio);
+
+  return {
+    title: `${personal.name} | ${personal.role}`,
+    description: personal.bio,
+    openGraph: {
+      title: `${personal.name} | ${personal.role}`,
+      description: personal.bio,
+      images: [{ url: personal.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${personal.name} | ${personal.role}`,
+      description: personal.bio,
+      images: [personal.image],
+    },
   };
 }
 
