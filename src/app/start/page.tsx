@@ -18,7 +18,10 @@ const StartPage = () => {
 
   // GitHub login handler (forces account chooser)
   const handleGitHubLogin = () => {
-    void signIn("github", { prompt: "login" });
+    void signIn("github", {
+      prompt: "select_account", // Force GitHub to show account chooser
+      allow_signup: true,       // Optional: allow new user signup
+    });
   };
 
   // Logout handler
