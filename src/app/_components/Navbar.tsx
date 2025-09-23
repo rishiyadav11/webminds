@@ -3,18 +3,25 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ✅ import this
 import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { data: session } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const pathname = usePathname(); // ✅ get current path
 
   const navItems = ["Features", "How it Works", "Pricing", "About"];
 
   useEffect(() => {
     setIsLoggedIn(!!session?.user);
   }, [session]);
+
+  const getHref = (item: string) => {
+    const hash = `#${item.toLowerCase().replace(/\s+/g, "-")}`;
+    return pathname === "/" ? hash : `/${hash}`; // ✅ if not on "/", go to home with hash
+  };
 
   return (
     <nav className="sticky top-0 z-50 border-b border-white/20 backdrop-blur-md bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a] shadow-md">
@@ -32,13 +39,13 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 font-medium text-sm">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item}
-              href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+              href={getHref(item)}
               className="text-gray-200 hover:text-white transition duration-300 transform hover:scale-110 hover:underline hover:underline-offset-4"
             >
               {item}
-            </a>
+            </Link>
           ))}
           <Link
             href={isLoggedIn ? "/dashboard" : "/start"}
@@ -61,13 +68,13 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-[#0f172a] border-t border-white/20 px-6 py-4 space-y-4 rounded-b-lg shadow-lg">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item}
-              href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+              href={getHref(item)}
               className="block text-gray-200 hover:text-white transition duration-300 transform hover:scale-110 hover:underline hover:underline-offset-4"
             >
               {item}
-            </a>
+            </Link>
           ))}
           <Link
             href={isLoggedIn ? "/dashboard" : "/start"}

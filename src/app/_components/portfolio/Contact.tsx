@@ -78,7 +78,7 @@ export default function Contact({ socials }: ContactProps) {
           I love collaborating, sharing ideas, and building cool projects. Find me on these platforms and let&apos;s make something amazing together!
         </p>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-10 justify-center">
           {socialCards.map(
             (social) =>
               social.url && (

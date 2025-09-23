@@ -75,7 +75,7 @@ export default function Experience({ experience }: ExperienceProps) {
 
   if (!hasExperience) {
     return (
-      <section className={`py-20 ${themeClasses.bg} min-h-screen flex flex-col items-center justify-center text-center px-4`}>
+      <section id="experience" className={`py-20 ${themeClasses.bg} min-h-screen flex flex-col items-center justify-center text-center px-4`}>
         <div className="max-w-4xl">
           <div className={`flex items-center justify-center w-16 h-16 rounded-full ${themeClasses.accent} text-white mb-6 mx-auto`}>
             <Star className="w-8 h-8" />
