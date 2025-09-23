@@ -1,5 +1,6 @@
 import React from 'react'
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const Herosection = () => {
   return (
@@ -45,12 +46,12 @@ const Herosection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mt-6">
-            <a
-              href="#dashboard"
+            <Link
+              href="/start"
               className="px-5 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow hover:opacity-90 transition"
             >
               Create My Portfolio
-            </a>
+            </Link>
             <a
               href="#features"
               className="px-5 py-3 rounded-xl font-semibold text-indigo-200 bg-white/10 border border-white/20 backdrop-blur hover:bg-black/20 transition"
@@ -59,22 +60,21 @@ const Herosection = () => {
             </a>
           </div>
 
-{/* Stats */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-  <div className="bg-[#0f172a] border border-white/10 rounded-xl p-4 text-center">
-    <b className="block text-2xl">🚀 Launch</b>
-    <span className="text-gray-400 text-sm">Be among the first creators</span>
-  </div>
-  <div className="bg-[#0f172a] border border-white/10 rounded-xl p-4 text-center">
-    <b className="block text-2xl">0 → 1</b>
-    <span className="text-gray-400 text-sm">Start your journey today</span>
-  </div>
-  <div className="bg-[#0f172a] border border-white/10 rounded-xl p-4 text-center">
-    <b className="block text-2xl">∞</b>
-    <span className="text-gray-400 text-sm">Unlimited possibilities</span>
-  </div>
-</div>
-
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <div className="bg-[#0f172a] border border-white/10 rounded-xl p-4 text-center">
+              <b className="block text-2xl">🚀 Launch</b>
+              <span className="text-gray-400 text-sm">Be among the first creators</span>
+            </div>
+            <div className="bg-[#0f172a] border border-white/10 rounded-xl p-4 text-center">
+              <b className="block text-2xl">0 → 1</b>
+              <span className="text-gray-400 text-sm">Start your journey today</span>
+            </div>
+            <div className="bg-[#0f172a] border border-white/10 rounded-xl p-4 text-center">
+              <b className="block text-2xl">∞</b>
+              <span className="text-gray-400 text-sm">Unlimited possibilities</span>
+            </div>
+          </div>
         </div>
 
         {/* Right Features Card */}
