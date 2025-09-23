@@ -1,5 +1,6 @@
-import { signOut } from "next-auth/react";
+"use server";
+import { signOut as serverSignOut } from "../auth";
 
-export function handleLogout() {
-  signOut({ callbackUrl: "/start" }); // redirects and clears session cookies
+export async function logout() {
+  await serverSignOut({ redirectTo: "/start" });
 }

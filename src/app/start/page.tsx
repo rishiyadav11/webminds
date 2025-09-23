@@ -16,12 +16,14 @@ const StartPage = () => {
     }
   }, [status, router]);
 
+  // GitHub login handler (forces account chooser)
   const handleGitHubLogin = () => {
-    signIn("github", { prompt: "login" }); // <-- force GitHub account chooser
+    void signIn("github", { prompt: "login" });
   };
 
+  // Logout handler
   const handleLogout = async () => {
-    await signOut({ callbackUrl: "/start" }); // redirect after logout
+    await signOut({ callbackUrl: "/start" });
   };
 
   return (
@@ -55,7 +57,7 @@ const StartPage = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 animate-gradient-x"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
               <span className="text-white text-2xl md:text-4xl font-bold animate-bounce mb-2">
-                🚀 Let's explore your projects
+                🚀 Let&apos;s explore your projects
               </span>
               <span className="text-gray-200 text-sm md:text-lg">
                 Your GitHub projects will be instantly visible in your portfolio.
