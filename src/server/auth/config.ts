@@ -29,6 +29,7 @@ export const authConfig: NextAuthConfig = {
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      authorization: { params: { prompt: "login" } }, // 👈 Force re-prompt every time
       profile(profile) {
         return {
           id: profile.id.toString(),
