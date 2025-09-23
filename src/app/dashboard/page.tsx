@@ -119,12 +119,13 @@ export default function DashboardPage() {
         </div>
 
         {/* Logout Button */}
-        <button
-          className="mt-6 px-6 py-2 bg-red-600 rounded-md text-white hover:bg-red-700 cursor-pointer transition"
-          onClick={() => logout()}
-        >
-          Logout
-        </button>
+       <button
+  className="mt-6 px-6 py-2 bg-red-600 rounded-md text-white hover:bg-red-700 cursor-pointer transition"
+  onClick={() => void logout()} // ensure promise is handled
+>
+  Logout
+</button>
+
       </div>
     </div>
   );
