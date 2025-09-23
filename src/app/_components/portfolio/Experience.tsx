@@ -90,7 +90,7 @@ export default function Experience({ experience }: ExperienceProps) {
             What I Bring
           </h3>
           <ul className={`text-left list-disc list-inside space-y-2 text-lg ${themeClasses.textMuted}`}>
-            <li>Strong knowledge of modern web development: React, Next.js, TypeScript, Node.js</li>
+            <li>Strong knowledge of modern web development technologies</li>
             <li>Passion for building beautiful, user-friendly interfaces</li>
             <li>Ability to learn new technologies quickly and apply them effectively</li>
             <li>Creative problem-solving and analytical thinking</li>
