@@ -52,10 +52,10 @@ interface PortfolioManagerProps {
 
 // Data
 const themes = [
-  { name: "Light", color: "bg-gray-100", accent: "bg-blue-500" ,image:"/light.png"},
-  { name: "Dark", color: "bg-gray-900", accent: "bg-purple-500" ,image:"/dark.png"},
-  { name: "Cyan", color: "bg-cyan-50", accent: "bg-cyan-500" ,image:"/cyan.png"},
-  { name: "Gradient", color: "bg-gradient-to-br from-purple-400 to-pink-400", accent: "bg-white" ,image:"/gradient.png"}
+  { name: "Light", color: "bg-gray-100", accent: "bg-blue-500" ,image:"/themes/light.png"}, 
+  { name: "Dark", color: "bg-gray-900", accent: "bg-purple-500" ,image:"/themes/dark.png"},
+  { name: "Cyan", color: "bg-cyan-50", accent: "bg-cyan-500" ,image:"/themes/cyan.png"},
+  { name: "Gradient", color: "bg-gradient-to-br from-purple-400 to-pink-400", accent: "bg-white" ,image:"/themes/gradient.png"}
 ];
 const predefinedSkills = [
   "React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3",
