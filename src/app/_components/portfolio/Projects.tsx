@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTheme } from '../../../hooks/useTheme';
-import { ExternalLink, Github, Code, Star } from 'lucide-react';
+import { ExternalLink, Code, Star } from 'lucide-react';
 import { Button } from '../ui/button';
 
 interface Project {
@@ -15,6 +15,19 @@ interface Project {
 interface ProjectsProps {
   projects?: Project[];
 }
+
+const randomDescriptions = [
+  "A cutting-edge project demonstrating innovative problem-solving and clean code.",
+  "An interactive web app showcasing modern UI/UX principles and responsive design.",
+  "A full-stack solution integrating backend APIs with a sleek frontend experience.",
+  "A creative project highlighting automation, efficiency, and real-world utility.",
+  "A performance-optimized application built with best practices in mind.",
+  "A learning-focused project demonstrating mastery of new technologies.",
+  "An open-source inspired project designed for collaboration and scalability.",
+  "A visually stunning interface combining functionality and aesthetic appeal.",
+  "A data-driven solution emphasizing analytics, insights, and interactivity.",
+  "A personal showcase project reflecting passion, creativity, and skill growth."
+];
 
 export default function Projects({ projects }: ProjectsProps) {
   const { theme } = useTheme();
@@ -87,19 +100,6 @@ export default function Projects({ projects }: ProjectsProps) {
           <p className={`text-lg mb-6 ${themeClasses.textMuted}`}>
             I am actively building exciting projects that demonstrate my skills and creativity. Stay tuned for updates!
           </p>
-          <h3 className={`text-3xl font-semibold mb-4 ${themeClasses.text}`}>
-            Skills in Action
-          </h3>
-          <ul className={`text-left list-disc list-inside space-y-2 text-lg ${themeClasses.textMuted}`}>
-            <li>Modern web development (React, Next.js, TypeScript)</li>
-            <li>Backend development with Node.js, Express, and databases</li>
-            <li>Responsive, performant, and user-friendly interfaces</li>
-            <li>Collaboration and real-time applications</li>
-            <li>Creative problem-solving and innovation</li>
-          </ul>
-          <p className={`mt-8 text-lg ${themeClasses.textMuted}`}>
-            I am excited to share my upcoming projects soon. In the meantime, check out my portfolio highlights above.
-          </p>
         </div>
       </section>
     );
@@ -130,28 +130,10 @@ export default function Projects({ projects }: ProjectsProps) {
                     {project.name}
                   </h3>
                 </div>
-                <div className="flex space-x-2">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${themeClasses.textMuted} hover:${themeClasses.accentText} transition-colors duration-200 transform hover:scale-110`}
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={project.url.replace('github.com', 'github.io')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${themeClasses.textMuted} hover:${themeClasses.accentText} transition-colors duration-200 transform hover:scale-110`}
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                </div>
               </div>
 
               <p className={`${themeClasses.textMuted} mb-4 leading-relaxed`}>
-                {project.description ?? "A project showcasing my skills, creativity, and problem-solving abilities."}
+                {project.description ?? randomDescriptions[Math.floor(Math.random() * randomDescriptions.length)]}
               </p>
 
               {project.tech && (
@@ -170,21 +152,6 @@ export default function Projects({ projects }: ProjectsProps) {
               )}
 
               <div className="flex space-x-3 mt-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className={`flex-1 border-2 ${themeClasses.border} ${themeClasses.text} 
-                    bg-transparent cursor-pointer
-                    hover:${themeClasses.accent.split(' ')[0]} hover:text-black 
-                    transition-all duration-300 
-                    transform hover:-translate-y-1 hover:scale-105 
-                    shadow-sm hover:shadow-lg`}
-                  onClick={() => window.open(project.url, '_blank')}
-                >
-                  <Github className="w-4 h-4 mr-2" />
-                  Code
-                </Button>
-
                 <Button
                   size="sm"
                   className={`flex-1 ${themeClasses.accent} text-white 
