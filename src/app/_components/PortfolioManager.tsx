@@ -17,6 +17,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Image from "next/image";
 
+
+
+// nnow everything works perfectly with full type safety!
 // Types
 type Personal = {
   name: string;
